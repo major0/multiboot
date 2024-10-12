@@ -24,7 +24,6 @@ const
   Multiboot2BootloaderMagic* = 0x36d76289 ##  This should be in %eax.
   Multiboot2ModAlign* = 0x00001000 ##  Alignment of multiboot modules.
   Multiboot2InfoAlign* = 0x00000008 ##  Alignment of the multiboot info structure.
-  Multiboot2TagAlign* = 8 ## Alignment of multboot tags
 
 type Multiboot2Info* = object
   ## The bootloader is responsible for passing hardware information to the
