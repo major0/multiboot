@@ -1,5 +1,5 @@
-import consts/multiboot1 as consts
-import types/multiboot1 as types
+import header/multiboot1 as header
+import info/multiboot1 as info
 
-export consts
-export types
+export header
+export info

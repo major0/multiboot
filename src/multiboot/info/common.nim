@@ -18,6 +18,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+
+# Common between Multiboot1 and Multiboo2
+type MultibootMemory* = enum
+  Available,
+  Reserved,
+  AcpiReclaimable,
+  Nvs,
+  Badram,
+
+type MultibootFramebufferType* = enum
+  Indexed,
+  Rgb,
+  EgaText,
+
 type MultibootFramebufferRgb* = object
   redFieldPosition*: uint8
   redMaskSize*: uint8

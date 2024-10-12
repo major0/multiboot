@@ -20,21 +20,10 @@
 
 import common
 
-type Multiboot1Header* = object
-  magic*: uint32 ##  Must be Multiboot1Magic - see above.
-  flags*: uint32 # Feature flags.
-  checksum*: uint32 ##  The flags field plus this one must equal 0 mod 2^32.
-  #  These are only valid if Multiboot1AoutKludge is set.
-  headerAddr*: uint32
-  loadAddr*: uint32
-  loadEndAddr*: uint32
-  bssEndAddr*: uint32
-  entryAddr*: uint32
-  #  These are only valid if Multiboot1VideoMode is set.
-  modeType*: uint32
-  width*: uint32
-  height*: uint32
-  depth*: uint32
+const
+  Multiboot1BootloaderMagic* = 0x2BADB002 ## This should be in %eax.
+  Multiboot1InfoAlign* = 0x00000004  ## Alignment of the multiboot info structure.
+  Multiboot1ModAlign* = 0x00001000   ## Alignment of multiboot modules.
 
 type Multiboot1AoutSymbolTable* = object ##  The symbol table for a.out.
   tabsize*: uint32
