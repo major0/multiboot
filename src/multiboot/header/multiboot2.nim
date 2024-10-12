@@ -67,7 +67,7 @@ type Multiboot2HeaderTagType* {.size: sizeof(uint16).} = enum
   Relocatable,
 
 type Multiboot2HeaderTag* = object
-  `type`*: Multiboot2HeaderTagType
+  `tagType`*: Multiboot2HeaderTagType
   flags*: uint16
     ## Per tag flags. If bit 0 is set, this tag is optional.
     ##
@@ -101,7 +101,7 @@ type Multiboot2HeaderTagAddress* = object
   ##
   ## All of the address fields in this tag must be physical addresses.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.Address
+    ## info.tagType must be Multiboot2TagType.Address
   headerAddr*: uint32
     ## Address of the Multiboot2 header
   loadAddr*: uint32
@@ -121,7 +121,7 @@ type Multiboot2HeaderTagAddress* = object
 type Multiboot2HeaderTagEntryAddress* = object
   ## All address fields in this tag must be physical addresses.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.EntryAddress
+    ## info.tagType must be Multiboot2TagType.EntryAddress
   entryAddr*: uint32
     ## Physical address which the bootloader should jump to in order to
     ## start the kernel.
@@ -134,7 +134,7 @@ type
 
 type Multiboot2HeaderTagConsoleFlags* = object
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.ConsoleFlags
+    ## info.tagType must be Multiboot2TagType.ConsoleFlags
   consoleFlags*: Multiboot2ConsoleFlags
     ## Flags indicating what console to use.
     ## Note: not setting bit0 (optional) in info.flags will not garantee
@@ -152,14 +152,14 @@ type Multiboot2HeaderTagFramebuffer* = object
 type Multiboot2HeaderTagModuleAlign* = object
   ## If this tag is present, then all modules must be page aligned.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.ModuleAlign
+    ## info.tagType must be Multiboot2TagType.ModuleAlign
 
 type Multiboot2HeaderTagEfiBs* = object
   ## If this tag is present, then the kernel supports starting without
   ## terminating EFI boot services. This means that the kernel must
   ## support EFI.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.EfiBs
+    ## info.tagType must be Multiboot2TagType.EfiBs
 
 type Multiboot2HeaderTagEfiI386* = object
   ## All of the address fields in this tag must be physical addresses.
@@ -167,7 +167,7 @@ type Multiboot2HeaderTagEfiI386* = object
   ## the ELF header.
   ## This tag is ignored on EFI amd64 systems.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.EfiI386
+    ## info.tagType must be Multiboot2TagType.EfiI386
   entryAddr*: uint32
     ## The physical address the bootloader should jump #to in order to
     ## start running EFI code.
@@ -178,7 +178,7 @@ type Multiboot2HeaderTagEntryAddressEfi64* = object
   ## the ELF header.
   ## This tag is only taken into account on EFI amd64 systems.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.EntryAddressEfi64
+    ## info.tagType must be Multiboot2TagType.EntryAddressEfi64
   entryAddr*: uint32
     ## Physical address which the bootloader should jump to in order to
     ## start the kernel.
@@ -197,7 +197,7 @@ type Multiboot2HeaderTagRelocatable* = object
   ## This tag indicates that the kernel is relocatable.
   ## All addresses in this tag must be physical addresses.
   info*: Multiboot2HeaderTag
-    ## info.type must be Multiboot2TagType.Relocatable
+    ## info.tagType must be Multiboot2TagType.Relocatable
   minAddr*: uint32
     ## Lowest possible address to load the kernel.
   maxAddr*: uint32
