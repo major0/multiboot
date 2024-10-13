@@ -1,0 +1,23 @@
+# Build artifacts
+*.out
+*.exe
+*.so
+
+# IDE temp files
+.*swp
+
+# Nim cache
+nimcache/
+
+# Nim test artifacts
+testresults/
+tests/**/test_*
+!tests/**/test_*.nim
+!tests/**/test_*.nims
+tests/megatest
+tests/megatest.nim
+outputExpected.txt
+outputGotten.txt
+testresults.html
+nimble.develop
+nimble.paths
